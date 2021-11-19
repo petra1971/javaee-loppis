@@ -6,6 +6,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
+@NamedQuery(name = "itemEntity.findAll", query = "SELECT i FROM Item i")
 @Entity
 public class Item {
 
@@ -42,7 +43,7 @@ public class Item {
         this.createdAt = createdAt;
     }
 
-    @JsonbTransient
+//    @JsonbTransient
     public User getUser() {
         return user;
     }

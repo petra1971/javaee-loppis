@@ -73,4 +73,81 @@ public class ItemRest {
     }
 
 
+    // JPQL QUERIES FOR DEMONSTRATION PURPOSES
+
+    @Path("getallnames")
+    @GET
+    public List<Item> getAllNames() {
+        return itemService.getAllNames();
+    }
+
+    @Path("getallitemssortedbycategory")
+    @GET
+    public List<Item> getAllItemsSortedByCategory() {
+        return itemService.getAllItemsSortedByCategory();
+    }
+
+    @Path("selectmaxprice")
+    @GET
+    public double selectMaxPrice() {
+        return itemService.selectMaxPrice();
+    }
+
+    @Path("getallwithnamedquery")
+    @GET
+    public List<Item> getAllWithNamedQuery() {
+        return itemService.getAllWithNamedQuery();
+    }
+
+    @Path("updateprice")
+    @PATCH
+    public void updatePrice() {
+       itemService.updatePrice();
+    }
+
+    @Path("deleteexpensive")
+    @DELETE
+    public void deleteExpensive() {
+        itemService.deleteExpensive();
+    }
+
+    @Path("getbyname_dq/{name}")
+    @GET
+    public List<Item> getByNameDQ(@PathParam("name") String name) {
+        return itemService.getByNameDynamicQuery(name);
+    }
+
+    @Path("getbyname_np/{name}")
+    @GET
+    public List<Item> getByNameNP(@PathParam("name") String name) {
+        return itemService.getByNameNamedParameters(name);
+    }
+
+    @Path("getbyname_pp/{name}")
+    @GET
+    public List<Item> getByNamePP(@PathParam("name") String name) {
+        return itemService.getByNamePositionalParameters(name);
+    }
+
+    @Path("getallitemsbetweenprice/{minPrice}/{maxPrice}")
+    @GET
+    public List<Item> getAllItemsBetweenPrice(@PathParam("minPrice") double minPrice,
+                                              @PathParam("maxPrice") double maxPrice) {
+        return itemService.getAllItemsBetweenPrice(minPrice, maxPrice);
+    }
+
+    @Path("getallitemscriteria")
+    @GET
+    public List<Item> getAllItemsCriteria() {
+        return itemService.getAllItemsCriteria();
+    }
+
+    @Path("getallitemssortedbycategorycriteria")
+    @GET
+    public List<Item> getAllItemsSortedByCategoryCriteria() {
+        return itemService.getAllItemsSortedByCategoryCriteria();
+    }
+
+
+
 }

@@ -21,6 +21,13 @@ public class User {
         item.setUser(this);
     }
 
+    public User(String username, String email) {
+        this.username = username;
+        this.email = email;
+    }
+
+    public User() {}
+
     public Long getId() {
         return id;
     }
