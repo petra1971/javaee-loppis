@@ -3,6 +3,9 @@ package se.iths.rest;
 import se.iths.entity.Item;
 import se.iths.service.ItemService;
 
+import javax.annotation.security.DenyAll;
+import javax.annotation.security.PermitAll;
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -12,6 +15,7 @@ import java.util.List;
 @Path("items")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
+@PermitAll
 public class ItemRest {
 
     @Inject
@@ -33,6 +37,7 @@ public class ItemRest {
 
     @Path("{id}")
     @GET
+    @RolesAllowed({"ADMIN", "USER"})
     public Response getItem(@PathParam("id") Long id) {
         Item foundItem = itemService.findItemById(id);
         if (foundItem == null) {
@@ -42,8 +47,10 @@ public class ItemRest {
         return Response.ok(foundItem).build();
     }
 
+
     @Path("")
     @GET
+    @RolesAllowed({"ADMIN"})
     public Response getAllItems() {
         List<Item> foundItems = itemService.getAllItems();
         return Response.ok(foundItems).build();
@@ -51,6 +58,7 @@ public class ItemRest {
 
     @Path("{id}")
     @DELETE
+    @DenyAll
     public Response deleteItem(@PathParam("id") Long id) {
         itemService.deleteItem(id);
         return Response.ok().build();
