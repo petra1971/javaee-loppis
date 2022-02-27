@@ -33,8 +33,9 @@ public class ItemRest {
 
     @Path("{id}")
     @GET
-    public Item getItem(@PathParam("id") Long id) {
-        return itemService.findItemById(id);
+    public Response getItem(@PathParam("id") Long id) {
+        Item foundItem = itemService.findItemById(id);
+        return Response.ok(foundItem).build();
     }
 
     @Path("getall")
@@ -42,6 +43,11 @@ public class ItemRest {
     public List<Item> getAllItems() {
         return itemService.getAllItems();
     }
-
+    @Path("{id}")
+    @DELETE
+    public Response deleteItem(@PathParam("id") Long id) {
+        itemService.deleteItem(id);
+        return Response.ok().build();
+    }
 
 }
