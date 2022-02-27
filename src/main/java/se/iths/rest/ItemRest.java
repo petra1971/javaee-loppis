@@ -43,10 +43,11 @@ public class ItemRest {
     public List<Item> getAllItems() {
         return itemService.getAllItems();
     }
+
     @Path("{id}")
     @DELETE
     public Response deleteItem(@PathParam("id") Long id) {
-        itemService.deleteItem(id);
+        itemService.deleteItem(id);  //Gör validering att itemet finns i serviceklassen istället för här
         return Response.ok().build();
     }
 

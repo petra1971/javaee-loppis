@@ -30,7 +30,7 @@ public class ItemService {
     }
 
     public void deleteItem(Long id) {
-        Item itemToRemove = entityManager.find(Item.class, id)
+        Item itemToRemove = entityManager.find(Item.class, id);
         entityManager.remove(itemToRemove);
     }
 }

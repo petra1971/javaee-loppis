@@ -20,7 +20,7 @@ public class Item {
     private double price;
     private LocalDate createdAt;
 
-    @PrePersist
+    @PrePersist //Denna metod körs innan objektet skrivs till DB
     public void getCurrentDate() {
         setCreatedAt(LocalDate.now());
     }
@@ -71,4 +71,5 @@ public class Item {
     public void setPrice(double price) {
         this.price = price;
     }
+
 }
