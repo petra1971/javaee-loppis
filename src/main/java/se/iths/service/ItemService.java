@@ -13,8 +13,9 @@ public class ItemService {
     @PersistenceContext
     EntityManager entityManager;
 
-    public void createItem(Item item) {
+    public Item createItem(Item item) {
         entityManager.persist(item);
+        return item;
     }
 
     public void updateItem(Item item) {
