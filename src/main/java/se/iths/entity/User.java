@@ -19,6 +19,14 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Item> items = new ArrayList<>();
 
+    public User(String userName, String email) {
+        this.userName = userName;
+        this.email = email;
+    }
+
+    public User() {
+    }
+
     public void addItem(Item item) { //Hjälpmetod som ser till att när ett item läggs till så sätts en användare, den här användaren
         items.add(item);
         item.setUser(this);
