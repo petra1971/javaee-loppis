@@ -8,7 +8,9 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
+@NamedQuery(name = "itemEntity.findAll", query = "SELECT i from Item i" )
 @Entity
+//@Table(name= "item table")
 public class Item {
 
     @Id
